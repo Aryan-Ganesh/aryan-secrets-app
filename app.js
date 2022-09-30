@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = 3000;
+
 // require mongoose
 const mongoose = require("mongoose");
 var findOrCreate = require('mongoose-findorcreate')
@@ -79,7 +79,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "https://aryan-secrets-app.herokuapp.com//auth/google/secrets"
+  callbackURL: "https://aryan-secrets-app.herokuapp.com/auth/google/secrets"
 },
   function (accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -205,6 +205,6 @@ app.get("/logout", (req, res) => {
   })
 })
 // setupServer
-app.listen(PORT || process.env.PORT, () => {
+app.listen(3000 || process.env.PORT, () => {
   console.log(`Server started on port : ${PORT}`);
 });
