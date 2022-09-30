@@ -1,0 +1,90 @@
+@import url('http://fonts.cdnfonts.com/css/the-amazing-spider-man');
+
+body {
+  margin: 0;
+  padding: 0;
+  /* background: linear-gradient(145deg, #e8cbc0, #636fa4); */
+  
+  color: #fff;
+  /* height: 100vh; */
+  background: offwhite;
+}
+
+.main {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #636fa4, #e8cbc0);
+  box-shadow: 20px 20px 60px #ccc, -20px -20px 60px #636fa4;
+  text-align: center;
+  padding: 50px;
+  width: 40%;
+  margin: 100px auto;
+}
+#main i {
+  font-size: 80px;
+  margin: 20px 0px;
+}
+
+#signup.main {
+  width: 30%;
+}
+
+
+#signup.main .form-control {
+  border-radius: 17px;
+  padding: 25px 20px;
+  border: none;
+}
+#signup.main button {
+  background-color: #636fa4;
+  border: none;
+  border-radius: 17px;
+  color: #fff;
+}
+
+
+#secrets.main h1{
+  margin-top: 20px;
+font-size: 50px;
+font-family: 'THE AMAZING SPIDER-MAN', sans-serif;
+color: #2B3784;
+}
+#secrets.main span{
+  color:#DF1F2D;
+}
+
+#secrets.main i{
+font-size: 40px;
+font-family: 'THE AMAZING SPIDER-MAN', sans-serif;
+color:#DF1F2D;
+}
+
+.blogs.main{
+  width:90%;
+  text-align: left;
+}
+
+.cta-btn{
+  background-color: #636fa4;
+  border: none;
+  border-radius: 17px;
+  color: #fff;
+}
+.cta{
+  background-color: #636fa4;
+  border: none;
+  border-radius: 17px;
+  color: #fff;
+}
+
+
+
+
+.red-link{
+  color:#fff;;
+  text-decoration: none;
+}
+
+
+.navi .cta{
+  padding:5px 20px;
+}
