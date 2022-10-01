@@ -5,14 +5,15 @@ const bodyParser = require("body-parser");
 
 // require mongoose
 const mongoose = require("mongoose");
-var findOrCreate = require('mongoose-findorcreate')
 
 // requires for level 5
-const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const passportLocal = require("passport-local");
+const session = require("express-session");
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var findOrCreate = require('mongoose-findorcreate')
 
 // middlewares
 app.set("view engine", "ejs");
@@ -66,14 +67,24 @@ var Blog = new mongoose.model("Blog", blogSchema);
 // create strategy
 passport.use(User.createStrategy());
 
-// serialize and deserialize
-passport.serializeUser(function (user, done) {
-  done(null, user);
+// // serialize and deserialize
+// passport.serializeUser(function (user, done) {
+//   done(null, user);
+// });
+
+// passport.deserializeUser(function (user, done) {
+//   done(null, user);
+// });
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
-passport.deserializeUser(function (user, done) {
-  done(null, user);
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
+
 
 
 passport.use(new GoogleStrategy({
@@ -187,6 +198,7 @@ app.post("/login", function (req, res) {
   req.login(user, function (err) {
     if (err) {
       console.log(err);
+      res.redirect("/login")
     } else {
       passport.authenticate("local")(req, res, function () {
         res.redirect("/secrets");
@@ -205,6 +217,6 @@ app.get("/logout", (req, res) => {
   })
 })
 // setupServer
-app.listen(3000 || process.env.PORT, () => {
+app.listen( process.env.PORT || 3000, () => {
   console.log(`Server started on port : 3000`);
 });
